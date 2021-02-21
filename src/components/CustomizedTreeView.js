@@ -3,8 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import TreeView from '@material-ui/lab/TreeView';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+// import CheckBox  from '@material-ui/icons/CheckBox';
+
 import TreeItem from '@material-ui/lab/TreeItem';
-import { TextField } from '@material-ui/core';
+import { Checkbox, TextField } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
@@ -14,37 +16,42 @@ const useStyles = makeStyles({
   },
   inputInput: {
     padding: "4px 8px",
-    color:"#fff"
+    color: "#fff"
   }
 });
 
 export default function CustomizedTreeView() {
   const classes = useStyles();
 
-// FOR EDITABLE 
-const [value, setValue] = React.useState("Custom item");
+  // FOR EDITABLE 
+  const [value, setValue] = React.useState("Custom item");
 
-const handleChange = (event) => {
-  setValue(event.target.value);
-};
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
 
 
 
   return (
     <TreeView
       className={classes.root}
-      defaultCollapseIcon={<ExpandMoreIcon />}
-      defaultExpandIcon={<ChevronRightIcon />}
+      // defaultCollapseIcon={<ExpandMoreIcon />}
+      defaultExpandIcon={<Checkbox />}
+
+      defaultCollapseIcon={<Checkbox />}
+      defaultEndIcon={<Checkbox />}
+
     >
       <TreeItem nodeId="1" label="Applications">
         <TreeItem nodeId="2" label="Calendar" />
         <TreeItem nodeId="3" label="Chrome" />
-        <TreeItem nodeId="4" label={ <TextField
-              value={value}
-              variant="outlined"
-              InputProps={{ classes: { input: classes.inputInput } }}
-              onChange={handleChange}
-            />} />
+        <TreeItem nodeId="4" label={
+          <TextField
+            value={value}
+            variant="outlined"
+            InputProps={{ classes: { input: classes.inputInput } }}
+            onChange={handleChange}
+          />} />
       </TreeItem>
       <TreeItem nodeId="5" label="Documents">
         <TreeItem nodeId="10" label="OSS" />
