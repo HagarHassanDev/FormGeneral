@@ -8,7 +8,17 @@ export const LessonForm = () => {
   const [conceptOf, setConceptOf] = useState('');
   const [instructionalRole, setInstructionalRole] = useState('');
   const [depthLevel, setDepthLevel] = useState('');
-  const [treeVlaues, setTreeValue] = useState([]);
+  const [treeValues, setTreeValue] = useState({
+    Chrome: false,
+    Calendar: false,
+    Applications: false,
+    Documents: false,
+    OSS: false,
+    Material: false,
+    src: false,
+    index: false,
+    tree: false
+  });
 
   const handleLessonSubmit = (e) => {
     e.preventDefault();
@@ -16,8 +26,7 @@ export const LessonForm = () => {
     console.log(conceptOf)
     console.log(instructionalRole)
     console.log(depthLevel)
-    console.log(treeVlaues)
-
+    console.log(treeValues)
   }
 
   return (
@@ -67,8 +76,7 @@ export const LessonForm = () => {
         <Form.Group>
           <Form.Label>To achieve the following aims</Form.Label>
           {/* <Form.Control  > */}
-          <CustomizedTreeView  value={treeVlaues} onChange={(e) => setTreeValue(e.target.value)} />
-
+          <CustomizedTreeView treeValues={treeValues} setTreeValue={setTreeValue} />
           {/* </Form.Control> */}
         </Form.Group>
 

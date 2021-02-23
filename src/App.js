@@ -1,6 +1,6 @@
 import './App.css';
-import {LessonForm  } from './components/LessonForm';
-import { UploadFileForm} from './components/UploadFileForm';
+import { LessonForm } from './components/LessonForm';
+import { UploadFileForm } from './components/UploadFileForm';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
@@ -25,38 +25,37 @@ const accessToken = 'eyJraWQiOiJqaldRWjVocFMzVUtyUWdOamZkSDF3eEFkZTlMcmNVUlNjazZ
 const apiUrl = 'https://apis.eduedges.com/api/data/courses/instructionalroles';
 
 const authAxios = axios.create({
-  baseURL: apiUrl , 
+  baseURL: apiUrl,
   headers: {
-    Authorization :`Bearer ${accessToken}`
+    Authorization: `Bearer ${accessToken}`
   }
 })
 
 
 function App() {
-  const [instructionalRoles , setInstructionalRoles ] = useState([]);
+  const [instructionalRoles, setInstructionalRoles] = useState([]);
 
-  const fetchData = useCallback(async ()=>{
+  const fetchData = useCallback(async () => {
     try {
       console.log("Hello from axios token ")
-        const result = await authAxios.get();
-        console.log(result);
-        setInstructionalRoles(result.data);
+      const result = await authAxios.get();
+      console.log(result);
+      setInstructionalRoles(result.data);
     } catch (error) {
       console.log(error);
     }
-
   });
 
 
-  useEffect(()=>{
+  useEffect(() => {
     fetchData();
-  },[]);
+  }, []);
 
   return (
     <div className="App">
 
-      <UploadFileForm/>
-      <LessonForm/>
+      <UploadFileForm />
+      <LessonForm />
     </div>
   );
 }
