@@ -30,8 +30,6 @@ export default function CustomizedTreeView() {
     setValue(event.target.value);
   };
 
-
-
   return (
     <TreeView
       className={classes.root}
@@ -45,13 +43,14 @@ export default function CustomizedTreeView() {
       <TreeItem nodeId="1" label="Applications">
         <TreeItem nodeId="2" label="Calendar" />
         <TreeItem nodeId="3" label="Chrome" />
-        <TreeItem nodeId="4" label={
-          <TextField
+        <TreeItem nodeId="4" 
+        label={<TextField
             value={value}
             variant="outlined"
             InputProps={{ classes: { input: classes.inputInput } }}
             onChange={handleChange}
-          />} />
+          />}
+          />
       </TreeItem>
       <TreeItem nodeId="5" label="Documents">
         <TreeItem nodeId="10" label="OSS" />
